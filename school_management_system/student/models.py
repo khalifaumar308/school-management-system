@@ -1,4 +1,16 @@
 from django.db import models
+from teacher.models import Class, Address
 
 # Create your models here.
 
+class Parent(models.Model):
+    name = models.CharField(max_length=75)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=75)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
+    student_class = models.ForeignKey(Class, on_delete=models.DO_NOTHING)
+
+    
