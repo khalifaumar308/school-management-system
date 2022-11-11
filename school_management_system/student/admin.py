@@ -3,6 +3,11 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('name', ('student_class'))
+    
+
+
+admin.site.register(Student, StudentAdmin)
 admin.site.register(Parent)
 
